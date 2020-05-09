@@ -8,11 +8,11 @@ Requirements:
 
 
 In order to run this you will need to follow the steps below:
-    0 Make sure you have python 3 instaled on your computer:
+    0 Make sure you have python 3 installed on your computer:
         This is a python3 script only it wont work on python 2.7
 
-    1 install Selenium on your python:
-        You can do this by launching your cmd or powershell and then typing the following command "python -m pip install"
+    1 Install Selenium on your python:
+        You can do this by launching your cmd or powershell and then typing the following command "python -m pip install selenium"
     2 Download Chromedriver and place it inside the folder where this script is located
        You can download it by going to https://chromedriver.chromium.org/downloads
        Warning: make sure to download the versions corresponding to the current Chrome you have installed on your computer.
