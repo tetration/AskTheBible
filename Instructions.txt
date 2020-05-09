@@ -1,0 +1,25 @@
+
+Requirements:
+    Python 3 installed on your computer
+    Selenium installed on your python through pip command
+    ChromeDrive in the folder where this script is located at
+    Chrome installed in your OS
+    Download 
+
+
+In order to run this you will need to follow the steps below:
+    0 Make sure you have python 3 instaled on your computer:
+        This is a python3 script only it wont work on python 2.7
+
+    1 install Selenium on your python:
+        You can do this by launching your cmd or powershell and then typing the following command "python -m pip install"
+    2 Download Chromedriver and place it inside the folder where this script is located
+       You can download it by going to https://chromedriver.chromium.org/downloads
+       Warning: make sure to download the versions corresponding to the current Chrome you have installed on your computer.
+       In order to check which version of chrome you have inside your machine launch your chrome, then click on the Menu icon in the upper right corner of the screen,
+       then click on Help, and then lastly click on About Google Chrome, as soon as you click on it a screen showing your current Chrome version number will appear. 
+       Now, that you know which version number of chrome you have, all you have to do now is download the corresponding version at chromedriver.
+
+    3 Run the program.
+        In order to run it all you have to do is launch your cmd or powershell then go to the folder(with cmd or powershell) where this script is located at
+        and then type "python py .\askTheBible.py"

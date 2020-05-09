@@ -1,0 +1,4 @@
+#Files to ignore
+*/oldchrome
+*.exe
+*.log
