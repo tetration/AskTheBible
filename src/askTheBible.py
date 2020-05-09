@@ -1,3 +1,10 @@
+#!/usr/bin/env python 
+#AskTheBible made by Rafael Oliveira/Tetration
+#Github author address: https://github.com/tetration
+#Github repository: tetration/AskTheBible
+#Contact: rafael@theancientscroll.com
+#Written for Python 3.X
+
 import time
 import re
 import secrets
