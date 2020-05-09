@@ -1,20 +1,23 @@
 
-What is AskTheBible?
-    AskTheBible is a python script that takes advantage of Selenium's powerful capabilities to search about Biblical verses in https://www.openbible.info/
+**What is AskTheBible?**
+-
+AskTheBible is a python script that takes advantage of Selenium's powerful capabilities to search about Biblical verses in https://www.openbible.info/
 
-Requirements:
-    Python 3 installed on your computer
-    Selenium installed on your python through pip command
-    ChromeDrive in the folder where this script is located at
-    Chrome installed in your OS
-    Download 
+**Requirements:**
+-
+1. Python 3 installed on your computer
+2. Selenium installed on your python through pip command
+3. ChromeDrive in the folder where this script is located at
+4. Chrome installed in your OS
 
 
-Future plans
-    -Ability to save bible verses you found in a txt or pdf file.
-    - Ability to search about biblical verses in other versions of the bible example: KJV, NKJV and so on.
+**Future plans**
+-
+- Ability to save bible verses you found in a txt or pdf file.
+- Ability to search about biblical verses in other versions of the bible example: KJV, NKJV and so on.
 
-Warning:
+**Warning:**
+-
     The entire risk arising out of the use or performance of   
     these python scrips and my documentation remains with you. In no event shall  
     I, or anyone else involved in the creation, production, or   
