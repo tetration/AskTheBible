@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python3
 #AskTheBible made by Rafael Oliveira/Tetration
 #Github author address: https://github.com/tetration
 #Github repository: tetration/AskTheBible
