@@ -4,7 +4,7 @@
 #Github repository: tetration/AskTheBible
 #Contact: rafael@theancientscroll.com
 #Written for Python 3.X
-
+import os 
 import time
 import re
 import secrets
@@ -17,12 +17,11 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from operator import methodcaller
 
 
 versesList = [None]
-searchList = ["jesus","struggles", "challenges", "bearing with one another","dreams","love","life", "marriage", "gold", "humility", "humble", "Kingdom come","wisdom", "judgement", "judgemental", "patience", "destiny", "sheep","path", "rewards", "enemies", "betrayal", "hardships", "overcoming hardships", "peace", "forgiving", "temptation" , "christ", "devil", "heaven", "hell", "damnation", "child", "wine", "food", "shelter", "future", "present", "past", "disease", "diseases", "cure", "heal", "holy spirit", "defile"]
+searchList = ["holy trinity","trinity", "father", "mother", "water","worship","sea", "fake friends","fish","jesus", "jealous", "envy","forthcoming","struggles", "challenges", "witness","bearing with one another", "boredom","dreams", "daugther", "darkness","prosperity","eternity", "book of life", "Lazarus","love","life", "light","marriage", "gold", "humility", "humble", "Kingdom","Kingdom come","wisdom", "judgement", "judgemental", "patience", "destiny", "sheep","path", "rewards", "enemies", "betrayal", "traitor", "hardships", "overcoming hardships", "peace", "forgiving", "temptation" , "christ", "devil", "demon", "persist","purgatory", "heaven", "hell", "damnation", "child", "wine", "food", "shelter", "future", "present", "past", "distress","disease", "diseases", "cure", "heal", "holy spirit", "defile", "repent", "son", "Solomon", "sin", "apocalypse", "slave", "free", "freedom", "plague", "egypt", "romans", "greek", "false prophet", "sorcery", "serpent", "beast", "dragon", "rage","fallen angel", "avenger", "authorities", "government", "tax collector"]
 
 class Biblical_verse:
     def __init__(self, verse_location, bible_version, verse_content):
@@ -33,6 +32,9 @@ class Biblical_verse:
         print(self.verse_location)
         print("Bible version:", self.bible_version, sep=" ")
         print(self.verse_content)
+    def returnStringOfEntireVerse(self):
+        entireVerse= self.verse_location+"\n"+self.bible_version+"\n"+self.verse_content+"\n"
+        return entireVerse
 
 
 def remove_html_tags(text):
@@ -73,8 +75,8 @@ def GetBiblicalVerses(driver, userQuestion):
     versesList.pop(0) 
     for create_verse in versesList:
         create_verse.show_verse()
-    print("\n This is a list of biblical verses found. Press enter to continue...")
-    userpress=input()
+        print("")
+    print("\n This is a list of biblical verses about", userQuestion ," found.\n", sep=" ")
     driver.quit() 
 
 def SearchAboutUserQuestionInTheBible(userQuestion):
@@ -106,7 +108,48 @@ def SearchAboutUserQuestionInTheBible(userQuestion):
     #found = getNumbers(found)
     #re.match(r'^[-+]?([1-9]\d*|0)$', found)
     print("Found", found, "Bible verses about", userQuestion ,sep=" ")
-    GetBiblicalVerses(driver,userQuestion);
+    GetBiblicalVerses(driver,userQuestion)
+    saveOrNot = saveTextMenu(userQuestion)
+    if saveOrNot=='1' or saveOrNot =='2':
+        saveFilesToTXTOrPDF(saveOrNot, userQuestion)
+
+def saveTextMenu(userSearch):
+    userInput=""
+    corretOption= False
+    while corretOption==False:
+        print("Would you like to save the biblical verses that we found about ", userSearch,"?" ,sep="")
+        print("1- Save the biblical verses in a txt file")
+        #print("2- Surprise me")
+        print("3- Don't save")
+        userInput=input();
+        if userInput=='1':
+            corretOption=True
+            break
+        elif userInput=='2':
+            print("For now, option", userInput, "does nothing, come back later to check if the developer implements the option to save to pdf yet ", sep=" ")
+            corretOption=True
+            break
+        elif userInput=='3':
+            corretOption=True
+            break
+        else:
+            print("Invalid choice, please pick one of the options avaliable")
+    return userInput
+
+def saveFilesToTXTOrPDF(userChoice, userQuestion):
+    print("Saving log in")
+    if userChoice=='1':
+        print("Saving verses about", userQuestion,"to a txt file...", sep=" ")
+        filename= "BibleVersesAbout_"+userQuestion+".txt"
+        with open(filename, 'w') as output:
+            for verse in versesList:
+                output.write(str(verse.returnStringOfEntireVerse()) + '\n')
+        print("Finished generating text file called", filename,"with Biblical verses about", userQuestion, sep="")
+        filelocation= os.path.dirname(os.path.realpath(filename))
+        print("The file can be found at:",filelocation,sep=" ")
+    elif userChoice =='2':
+        print("Saving verses about",  userQuestion,"to a PDF file...", sep=" ")
+        print("This feature is not ready yet. Come back later, to check if the developer has already implemented the option to save to a pdf file")
 
 def WhatToDo():
     option=menu()
@@ -121,7 +164,7 @@ def WhatToDo():
         print("The program will now exit")
 
 def menu():
-    userInput="";
+    userInput=""
     corretOption= False
     while corretOption==False:
         print("What would you like to do today?")

@@ -13,7 +13,7 @@ AskTheBible is a python script that takes advantage of Selenium's powerful capab
 
 **Future plans**
 -
-- Ability to save bible verses you found in a txt or pdf file.
+- Ability to save bible verses you found in a pdf file.
 - Ability to search about biblical verses in other versions of the bible example: KJV, NKJV and so on.
 
 **Warning:**
