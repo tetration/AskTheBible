@@ -76,8 +76,9 @@ def GetBiblicalVerses(driver, userQuestion):
     for create_verse in versesList:
         create_verse.show_verse()
         print("")
-    print("\n This is a list of biblical verses about", userQuestion ," found.\n", sep=" ")
-    driver.quit() 
+    driver.quit()
+    print("\n This is a list of biblical verses about", userQuestion ,"found.\n", sep=" ")
+     
 
 def SearchAboutUserQuestionInTheBible(userQuestion):
     options = webdriver.ChromeOptions()
@@ -126,7 +127,7 @@ def saveTextMenu(userSearch):
             corretOption=True
             break
         elif userInput=='2':
-            print("For now, option", userInput, "does nothing, come back later to check if the developer implements the option to save to pdf yet ", sep=" ")
+            print("For now, option", userInput, "does nothing, come back later to check if the developer implements the option to save to pdf yet", sep=" ")
             corretOption=True
             break
         elif userInput=='3':
@@ -144,7 +145,7 @@ def saveFilesToTXTOrPDF(userChoice, userQuestion):
         with open(filename, 'w') as output:
             for verse in versesList:
                 output.write(str(verse.returnStringOfEntireVerse()) + '\n')
-        print("Finished generating text file called", filename,"with Biblical verses about", userQuestion, sep="")
+        print("Finished generating text file called", filename,"with Biblical verses about", userQuestion, sep=" ")
         filelocation= os.path.dirname(os.path.realpath(filename))
         print("The file can be found at:",filelocation,sep=" ")
     elif userChoice =='2':
