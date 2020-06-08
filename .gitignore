@@ -2,4 +2,6 @@
 */oldchrome
 *.exe
 *.log
+*.mp3
+audio_text.py
 BibleVersesAbout*.txt
