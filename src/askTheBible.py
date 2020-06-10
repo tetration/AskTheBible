@@ -22,7 +22,7 @@ from gtts import gTTS
 from playsound import playsound
 
 versesList = [None]
-searchList = ["holy trinity","trinity", "father", "mother", "water", "wicked","worship","sea", "sloth", "fake friends","fish", "focus","jesus", "jew","jealous", "envy","forthcoming","struggles", "challenges", "witness","bearing with one another", "boredom", "being hated", "dreams", "daugther", "darkness","prosperity","eternity", "book of life", "Lazarus","love","life", "light","marriage", "gold", "humility", "humble", "Kingdom","Kingdom come","wisdom", "judgement", "judgemental", "patience", "pride","destiny", "sheep","path", "rewards", "right girl","enemies", "betrayal", "traitor", "hardships", "hate", "overcoming hardships", "peace", "redemption","forgiving", "temptation" , "christ", "devil", "demon", "persist","purgatory", "heaven", "hell", "damnation", "child", "wine", "food", "shelter", "future", "present", "past", "distress","disease", "diseases", "cure", "heal", "holy spirit", "defile", "repent", "son", "Solomon", "sin", "apocalypse", "slave", "free", "freedom", "plague", "egypt", "romans", "greek", "hebrew", "false prophet", "sorcery", "witchcraft", "serpent", "beast", "dragon", "rage","fallen angel", "flesh", "avenger", "authorities", "government", "governor","tax collector", "end of the world", "end of times"]
+searchList = ["holy trinity","trinity", "father", "mother", "water", "wicked","worship","sea", "sloth", "fake friends","fish", "focus","jesus", "jew","jealous", "envy","forthcoming","struggles", "challenges", "witness","bearing with one another", "boredom", "being hated", "dreams", "daugther", "death", "darkness","prosperity","eternity", "book of life", "Lazarus","love","life", "light","marriage", "gold", "humility", "humble", "Kingdom","Kingdom come","wisdom", "judgement", "judgemental", "patience", "pride","destiny", "sheep","path", "rewards", "right girl","enemies", "betrayal", "traitor", "hardships", "hate", "heresy", "overcoming hardships", "peace", "redemption","forgiving", "temptation" , "christ", "devil", "demon", "persist","purgatory", "heaven", "hell", "damnation", "child", "wine", "food", "shelter", "future", "present", "past", "distress","disease", "diseases", "cure", "heal", "holy spirit", "defile", "repent", "son", "Solomon", "sin", "apocalypse", "slave", "free", "freedom", "plague", "egypt", "romans", "greek", "hebrew", "false prophet", "sorcery", "witchcraft", "serpent", "beast", "dragon", "rage","fallen angel", "flesh", "avenger", "authorities", "government", "governor","tax collector", "end of the world", "end of times"]
 
 class Biblical_verse:
     def __init__(self, verse_location, bible_version, verse_content):
@@ -199,6 +199,8 @@ def convertAllTextVersesToAudio(userQuestion):
     mytext = ' Philippians 4:13 \n ESV \n I can do all things through him who strengthens me.'
     language = 'en'
     listSize=len(versesList)
+    finalpath="biblical_verses_about_{userQ}".format(userQ=userQuestion)
+    os.mkdir(finalpath)
     for create_verse in versesList:
         index= versesList.index(create_verse)
         #print("Position", index,sep = " ")
@@ -207,10 +209,10 @@ def convertAllTextVersesToAudio(userQuestion):
         oldname= create_verse.verse_location
         oldname = oldname.replace(":", "_")
         filename=oldname+".mp3"
-        myobj.save(filename) 
-        filelocation= os.path.dirname(os.path.realpath(filename))
+        myobj.save("biblical_verses_about_{userQ}\{filenam}".format(userQ=userQuestion,filenam=filename)) 
+        filelocation= os.path.dirname(os.path.realpath(finalpath+"\\"+filename))
         print("Created mp3 file for verse", create_verse.verse_location,"which can be located at", filelocation,"under the name of", filename, sep=" ")
-        print(versesList.index(create_verse), "out of", listSize,"verses to convert to mp3 left", sep=" ")
+        print(versesList.index(create_verse)+1, "out of", listSize,"verses to convert to mp3 left", sep=" ")
     print("")
     print("Finished converting all Biblical verses about", userQuestion, "to mp3 files", sep= " ")
      
