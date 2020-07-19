@@ -14,6 +14,9 @@ In order to run this you will need to follow the steps below:
 
     1 Install requirements on your python:
         You can do this by opening this folder with your cmd, terminal or powershell and then typing the following command "pip install -r requirements.txt"
+
+        Warning: If you get an import error like this: "ImportError: Installing this module requires OpenSSL python bindings" when using the pip install command please, type this following command "pip install pyopenssl" and then try step 1 again.
+
     2 Download Chromedriver and place it inside the folder where this script is located
        You can download it by going to https://chromedriver.chromium.org/downloads
        Warning: make sure to download the versions corresponding to the current Chrome you have installed on your computer.
@@ -22,6 +25,8 @@ In order to run this you will need to follow the steps below:
        Now, that you know which version number of chrome you have, all you have to do now is download the corresponding version at chromedriver.
        Example: this python script is currently located inside the folder src, so as soon as you finish dowloading the corresponding chromedriver version for your chrome.
        You need to place it inside the "src" folder where this script is located at. Only then the script will run as intended.
+
+       
 
     3 Installing dependencies to run audio 
 

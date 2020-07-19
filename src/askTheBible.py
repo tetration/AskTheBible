@@ -13,7 +13,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.service import Service
-
+from OpenSSL import SSL
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -22,7 +22,8 @@ from gtts import gTTS
 from playsound import playsound
 
 versesList = [None]
-searchList = ["holy trinity","trinity", "father", "mother", "water", "wicked","worship","sea", "sloth", "fake friends","fish", "focus","jesus", "jew","jealous", "envy","forthcoming","struggles", "challenges", "witness","bearing with one another", "boredom", "being hated", "dreams", "daugther", "death", "darkness","prosperity","eternity", "book of life", "Lazarus","love","life", "light","marriage", "gold", "humility", "humble", "Kingdom","Kingdom come","wisdom", "judgement", "judgemental", "patience", "pride","destiny", "sheep","path", "rewards", "right girl","enemies", "betrayal", "traitor", "hardships", "hate", "heresy", "overcoming hardships", "peace", "redemption","forgiving", "temptation" , "christ", "devil", "demon", "persist","purgatory", "heaven", "hell", "damnation", "child", "wine", "food", "shelter", "future", "present", "past", "distress","disease", "diseases", "cure", "heal", "holy spirit", "defile", "repent", "son", "Solomon", "sin", "apocalypse", "slave", "free", "freedom", "plague", "egypt", "romans", "greek", "hebrew", "false prophet", "sorcery", "witchcraft", "serpent", "beast", "dragon", "rage","fallen angel", "flesh", "avenger", "authorities", "government", "governor","tax collector", "end of the world", "end of times"]
+question = ""
+searchList = ["holy trinity","trinity", "father", "failure", "fraternity", "mother", "water", "wicked","worship","sea", "sloth", "fake friends","fish", "focus","jesus", "jew","jealous", "envy","forthcoming","struggles", "challenges", "witness","bearing with one another", "boredom", "being hated", "dreams", "daugther", "death", "darkness","prosperity","eternity", "book of life", "Lazarus","love","life", "light","marriage", "gold", "humility", "humble", "Kingdom","Kingdom come","wisdom", "judgement", "judgemental", "patience", "pride","destiny", "sheep","path", "rewards", "right girl","enemies", "betrayal", "traitor", "hardships", "hate", "heresy", "overcoming hardships", "peace", "redemption","forgiving", "temptation" , "christ", "devil", "demon", "persist","purgatory", "heaven", "hell", "damnation", "child", "wine", "food", "shelter", "future", "present", "past", "distress","disease", "diseases", "cure", "heal", "holy spirit", "defile", "repent", "son", "Solomon", "sin", "apocalypse", "slave", "free", "freedom", "plague", "egypt", "romans", "greek", "hebrew", "false prophet", "sorcery", "witchcraft", "serpent", "beast", "dragon", "rage","fallen angel", "flesh", "avenger", "authorities", "government", "governor","tax collector", "end of the world", "end of times"]
 
 class Biblical_verse:
     def __init__(self, verse_location, bible_version, verse_content):
@@ -236,7 +237,7 @@ def convertSpecificTextVerseToAudio(userQuestion):
     shift = -1
     while 0 > shift or listSize < shift and userAnswered==False:
         try:
-            print("Please enter the location of the verse you which to convert to mp3 (0 - ", len(versesList), ") : ",sep="")
+            print("Please, type the position of the verse you would like to convert to mp3 (0 - ", len(versesList), ") : ",sep="")
             shift = int(input())
             userAnswer=True
         except ValueError:
