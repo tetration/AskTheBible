@@ -64,20 +64,20 @@ def RemoveEverythingAfter(word ,removeeverythingafterThisWord):
     return substring
 
 def GetBiblicalVerses(driver, userQuestion):
-    print("Getting a list of verses about", userQuestion,"...", sep=" ")
-    
+    print("Getting a list of verses about", userQuestion,"...", sep=" ") 
+    table = driver.find_element(by=By.TAG_NAME, value="html")
     try:
-        table= driver.find_element_by_id("vote")
+        table = driver.find_element(by=By.ID, value="vote")
         WebDriverWait(driver, 4).until(table)
     except:
         print ('Timed out waiting for page to load') 
     
-    biblicalVerse = table.find_elements_by_tag_name('div') 
+    biblicalVerse = table.find_elements(by=By.TAG_NAME, value="div")
 
     for items in biblicalVerse:
-        title = items.find_element_by_css_selector("h3 > a").text
-        bible_version = RemoveEverythingAfter(items.find_element_by_css_selector("h3 > span.note").text, "/")
-        content = items.find_element_by_tag_name("p").text
+        title = items.find_element(by=By.CSS_SELECTOR, value="h3 > a").text 
+        bible_version = RemoveEverythingAfter(items.find_element(by=By.CSS_SELECTOR, value="h3 > span.note").text, "/")
+        content = items.find_element(by=By.TAG_NAME, value="p").text
         #print("The title is: ", title)
         #print("Bible version is: ", bible_version)
         #print("Content :",content)
@@ -110,16 +110,16 @@ def SearchAboutUserQuestionInTheBible(userQuestion):
     prefs = {"profile.managed_default_content_settings.popups":2,"profile.default_content_setting_values.notifications": 2,"profile.default_content_setting_values.images": 2,"profile.password_manager_enabled": False, "credentials_enable_service": False}
     options.add_experimental_option("prefs", prefs)
     
-    driver = webdriver.Chrome(chrome_options=options)
+    driver = webdriver.Chrome(options=options)
     driver.get("https://www.openbible.info/topics/")
-    element = driver.find_element_by_id("search")
+    element = driver.find_element(by=By.ID,value="search") 
     element.send_keys(userQuestion)
     try:
         element.send_keys(Keys.ENTER)
     except:
         print("Trying to search again")
         element.send_keys(Keys.ENTER)
-    found=driver.find_element_by_css_selector("#body > h1 > span").get_attribute("innerHTML")
+    found=driver.find_element(by=By.CSS_SELECTOR, value="#body > h1 > span").get_attribute("innerHTML") 
     found = remove_html_tags(found)
     found = re.findall(r'[0-9]+', found)
     #found = getNumbers(found)
